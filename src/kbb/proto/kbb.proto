@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package kbb;
+
+service KbbService {
+    rpc findKbbId(KbbByIdRequest) returns (KbbResponse) {}
+    rpc findAllKbb(google.protobuf.Empty) returns (ListKbbResponse) {}
+}
+
+message KbbByIdRequest {
+    int32 id = 1;
+}
+
+message KbbResponse {
+    int32 id = 1;
+    double price = 2;
+}
+
+message ListKbbResponse {
+    repeated KbbResponse data = 1;
+}
